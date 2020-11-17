@@ -1,13 +1,25 @@
 let connected = false;
-const usernameInpit = document.getElecmentById('username');
+const usernameInput = document.getElecmentById('username');
 const button = document.getElementById('join_leave');
-const button = document.getElementById('container');
-const count = document.getElementById('count');
-let room
+const shareScreen = document.getElementById('join_leave');
+const toggleChat = documenet.getElecmentById('share_screen');
+const container = document.getElementById('container');
+const count = document.getElecmentById('count');
+const chatScroll = document.getElementById('chat-scroll');
+const chatContent = document.getElecmentById('chat-content');
+const chatInput = document.getElecmentById('chat-input');
+
+let connected = false;
+let room;
+let chat;
+let conv;
+let screenTrack;
 
 function addLocalVideo() {
     Twilio.video.createLocalVideoTrack().then(track => {
         let video = document.getElementById('local').firstChild;
+        let trackElement = track.attach();
+        trackElement.addEventListener('click', () => { zoomTrack(trackElement);});
         video.appendChild(track.attach());
     });
 };
@@ -36,28 +48,33 @@ function connectButtonHandler(event){
         disconnect();
         button.innerHTML = 'Join call';
         connected = false;
+        shareScreen.innerHTML = 'Share screen';
+        shareScreen.disabled = true;
     }
 };
 
 
 function connect(username){
     let promise = new Promise((resolve, reject) => {
-        // get a token from the back end
+        let data; // get a token from the back end
         fetch('/login', {
             method :'POST',
             body: JSON.stringify({'username':username})
         }).then(res => res.json()).then(data =>{
             // join video call
+            data = _data;
             return Twilio.Video.connect(data.token);
         }).then(_room => {
             room = _room;
             room.participants.forEach(participantConnected);
             room.on('participantConnected',participantConnected);
-            room.on(participantDisconnected,'participantDisconnected');
+            room.on('participantDisconnected,'participantDisconnected);
             connected = true;
             updateParticipantCount();
+            connectChat(data.token,data.conversation_sid);
             resolve();
         }).catch(() => {
+            console.log(e);
             reject();
         });
     });
@@ -80,10 +97,11 @@ function participantConnected(participant) {
     participantDiv.appendChild(tracksDiv);
 
     let labelDiv = document.createElement('div');
+    lavelDiv.setAttribute('class','label');
     labelDiv.innerHTML = participant.identity;
     participantDiv.appendChild(labelDiv);
 
-    CredentialsContainer.appendChild(participantDiv);
+    container.appendChild(participantDiv);
 
     particpant.tracks.forEach(publication => {
         if (publication.isSubscribed)
@@ -102,16 +120,20 @@ function participantDisconnected(participant) {
 }
 
 function trackSubscribed(div, track){
-    div.appendChild(track.attach());
+    let trackElement = track.attach();
+    trackElement.addEventListener('click',() => {zoomTrack(trackElement); });
+    div.appendChild(trackElement);
 };
 
-function trackSubscribed(div, track){
-    div.appendChild(track.attach());
-};
 
 function trackUnsubscribed(track){
-    track.detach().ForEach(element => element.remove());
-}
+    track.detach().forEach(element => {
+        if (element.classList.contains('participantZoomed')) {
+            zoomTrack(element);
+        }
+        element.remove()
+    });
+};
 
 function disconnect(){
     room.disconnect();

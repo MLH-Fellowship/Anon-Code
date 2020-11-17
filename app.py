@@ -1,10 +1,11 @@
 import os
-from flask import Flask,render_template
+import os
 from flask import Flask, render_template, request,abort
 from twilio.jwt.access_token import AccessToken
-from twilio.jwt.access_token.grants import VideoGrant
+from twilio.jwt.access_token.grants import VideoGrant,ChatGrant
 from dotenv import load_dotenv
 from twilio.rest import Client
+from twilio.base.exceptions import TwilioRestException
 
 load_dotenv()
 twilio_account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
@@ -16,6 +17,14 @@ twilio_client = Client(twilio_api_key_sid, twilio_api_key_secret,
 
 app = Flask(__name__)
 
+def get_chatroom(name):
+    for conversation in twilio_client.conversations.conversations.list():
+        if conversation.friendly_name == name:
+            return conversation
+
+    # a conversation with a given name does not exist ==> create a new one
+    return twilio_client.converations.converations.create(friendly_name=name)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -26,9 +35,18 @@ def login():
     if not username:
         abort(401)
 
+    converation = get_chatroom('My Room')
+    try:
+        converation.participants.create(identity=username)
+    except TwilioRestException as exc:
+        # do not error if the user is already in the conversation
+        if exc.status != 409:
+            raise
     token = AccessToken(twilio_account_sid,twilio_api_key_sid,
                         twilio_api_key_secret, identity=username)
     
     token.add_grant(VideoGrant(room='My Room'))
+    token.add_grant(ChatGrant(service_sid=converation.chat_service_sid))
 
-    return {'token' : token.to_jwt().decode()}
+    return {'token' : token.to_jwt().decode(),
+            'converation_sid': conversation.sid}
