@@ -100,6 +100,18 @@ function participantDisconnected(participant) {
     document.getElementById(participant)
 }
 
+function trackSubscribed(div, track){
+    div.appendChild(track.attach());
+};
+
+function trackSubscribed(div, track){
+    div.appendChild(track.attach());
+};
+
+function trackUnsubscribed(track){
+    track.detach().ForEach(element => element.remove());
+}
+
 
 
 addLocalVideo();
