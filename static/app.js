@@ -71,9 +71,9 @@ function updateParticipantCount(){
         count.innerHTML = (room.participants.size + 1) + 'participants online.';
 };
 
-function participantConnected(particpant) {
+function participantConnected(participant) {
     let participantDiv = document.createElement('div');
-    participantDiv.setAttribute('id', participand.sid);
+    participantDiv.setAttribute('id', participant.sid);
     participantDiv.setAttribute('class','participant');
 
     let tracksDiv = document.createElement('div');
@@ -98,6 +98,7 @@ function participantConnected(particpant) {
 
 function participantDisconnected(participant) {
     document.getElementById(participant)
+    updateParticipantCount();
 }
 
 function trackSubscribed(div, track){
@@ -112,6 +113,14 @@ function trackUnsubscribed(track){
     track.detach().ForEach(element => element.remove());
 }
 
+function disconnect(){
+    room.disconnect();
+    while (CredentialsContainer.lastChild.id != 'local')
+        CredentialsContainer.removeChild(container.lastChild);
+    button.innerHTML = 'Join call';
+    connected = false;
+    updateParticipantCount();
+};
 
 
 addLocalVideo();
