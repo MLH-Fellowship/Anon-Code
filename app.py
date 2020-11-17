@@ -23,7 +23,7 @@ def get_chatroom(name):
             return conversation
 
     # a conversation with a given name does not exist ==> create a new one
-    return twilio_client.converations.converations.create(friendly_name=name)
+    return twilio_client.conversations.conversations.create(friendly_name=name)
 
 @app.route('/')
 def index():
@@ -35,9 +35,9 @@ def login():
     if not username:
         abort(401)
 
-    converation = get_chatroom('My Room')
+    conversation = get_chatroom('My Room')
     try:
-        converation.participants.create(identity=username)
+        conversation.participants.create(identity=username)
     except TwilioRestException as exc:
         # do not error if the user is already in the conversation
         if exc.status != 409:
@@ -46,7 +46,10 @@ def login():
                         twilio_api_key_secret, identity=username)
     
     token.add_grant(VideoGrant(room='My Room'))
-    token.add_grant(ChatGrant(service_sid=converation.chat_service_sid))
+    token.add_grant(ChatGrant(service_sid=conversation.chat_service_sid))
 
     return {'token' : token.to_jwt().decode(),
             'converation_sid': conversation.sid}
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
