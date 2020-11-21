@@ -1,9 +1,8 @@
 import os
-import os
-from flask import Flask, render_template, request,abort
-from twilio.jwt.access_token import AccessToken
-from twilio.jwt.access_token.grants import VideoGrant,ChatGrant
 from dotenv import load_dotenv
+from flask import Flask, render_template, request, abort
+from twilio.jwt.access_token import AccessToken
+from twilio.jwt.access_token.grants import VideoGrant, ChatGrant
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
 
@@ -14,20 +13,23 @@ twilio_api_key_secret = os.environ.get('TWILIO_API_KEY_SECRET')
 twilio_client = Client(twilio_api_key_sid, twilio_api_key_secret,
                        twilio_account_sid)
 
-
 app = Flask(__name__)
+
 
 def get_chatroom(name):
     for conversation in twilio_client.conversations.conversations.list():
         if conversation.friendly_name == name:
             return conversation
 
-    # a conversation with a given name does not exist ==> create a new one
-    return twilio_client.conversations.conversations.create(friendly_name=name)
+    # a conversation with the given name does not exist ==> create a new one
+    return twilio_client.conversations.conversations.create(
+        friendly_name=name)
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -42,14 +44,15 @@ def login():
         # do not error if the user is already in the conversation
         if exc.status != 409:
             raise
-    token = AccessToken(twilio_account_sid,twilio_api_key_sid,
+
+    token = AccessToken(twilio_account_sid, twilio_api_key_sid,
                         twilio_api_key_secret, identity=username)
-    
     token.add_grant(VideoGrant(room='My Room'))
     token.add_grant(ChatGrant(service_sid=conversation.chat_service_sid))
 
-    return {'token' : token.to_jwt().decode(),
-            'converation_sid': conversation.sid}
+    return {'token': token.to_jwt().decode(),
+            'conversation_sid': conversation.sid}
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

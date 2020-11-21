@@ -8,6 +8,12 @@ then
     python -m venv venv
 fi
 
+echo ------------------------
+echo Activating environment
+echo ------------------------
+source venv/bin/activate
+
+
 if [ -f "requirements.txt" ];
 then
     echo ----------------------------
@@ -16,10 +22,6 @@ then
     pip install -r requirements.txt
 fi
 
-echo ------------------------
-echo Activating environment
-echo ------------------------
-source venv/bin/activate
 
 echo -------------------------
 echo Setting FLask environment
