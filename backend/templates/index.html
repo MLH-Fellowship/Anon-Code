@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        {{ codemirror.include_codemirror() }}
     </head>
     <body>
         <h1>Flask & Twilio Video Conference</h1>
@@ -13,11 +14,18 @@
             <button id="toggle_chat" disabled>Toggle chat</button>
         </form>
         <p id="count">Disconnected.</p>
+        <div>
+                <form method="POST">
+                    {{ form.source_code }}
+                    <input type="submit" value="OK">
+                 </form>
+            </div>
         <div id="root">
             <div id="container" class="container">
                 <div id="local" class="participant"><div></div><div class="label">Me</div></div>
                 <!-- more participants will be added dynamically here -->
             </div>
+            
             <div id="chat">
                 <div id="chat-scroll">
                     <div id="chat-content">
@@ -26,6 +34,7 @@
                 </div>
                 <input id="chat-input" type="text">
             </div>
+            
         </div>
         <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
         <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>

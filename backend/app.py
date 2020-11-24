@@ -6,6 +6,14 @@ from twilio.jwt.access_token.grants import VideoGrant, ChatGrant
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
 
+from flask_codemirror import CodeMirror
+# # mandatory
+# CODEMIRROR_LANGUAGES = ['python', 'html']
+# WTF_CSRF_ENABLED = False
+# SECRET_KEY = 'secret'
+# # optional
+# CODEMIRROR_THEME = '3024-day'
+
 load_dotenv()
 twilio_account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
 twilio_api_key_sid = os.environ.get('TWILIO_API_KEY_SID')
@@ -14,7 +22,25 @@ twilio_client = Client(twilio_api_key_sid, twilio_api_key_secret,
                        twilio_account_sid)
 
 app = Flask(__name__)
+CODEMIRROR_LANGUAGES = ['python']
+CODEMIRROR_THEME = '3024-day'
+CODEMIRROR_ADDONS = (('dialog', 'dialog'), ('mode', 'overlay'))
+CODEMIRROR_VERSION = '4.12.0'
+SECRET_KEY = 'secret!'
+app.config["SECRET_KEY"] = 'secret!'
+app.config.from_object(__name__)
 
+codemirror = CodeMirror(app)
+
+####
+from flask_wtf import FlaskForm
+from flask_codemirror.fields import CodeMirrorField
+from wtforms.fields import SubmitField
+
+class MyForm(FlaskForm):
+    source_code = CodeMirrorField(language='python', config={'lineNumbers': 'true'})
+    submit = SubmitField('Submit')
+####
 
 def get_chatroom(name):
     for conversation in twilio_client.conversations.conversations.list():
@@ -26,9 +52,12 @@ def get_chatroom(name):
         friendly_name=name)
 
 
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = MyForm()
+    if form.validate_on_submit():
+        text = form.source_code.data
+    return render_template('index.html', form=form)
 
 
 @app.route('/login', methods=['POST'])
@@ -55,4 +84,5 @@ def login():
 
 
 if __name__ == '__main__':
+    
     app.run(host='0.0.0.0')
