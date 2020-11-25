@@ -71,6 +71,6 @@ Other tools:
 | [<img src="https://avatars3.githubusercontent.com/u/31460383?s=400&u=3c9633dec7b2a9eadb0ed2b8174afb3475e56283&v=4" width="100px;"/>](https://github.com/knoxd8256)<br />[🌍]() [💻](https://github.com/smellslikekeenspirit) [🤝]() | [<img src="https://avatars1.githubusercontent.com/u/28723598?s=460&u=9444300dccf4ead144b03c7710f0ff4c149e05f8&v=4" width="100px;"/>](https://shayanriyaz.github.io)<br />[🌍](https://shayanriyaz.github.io) [💻](https://github.com/ShayanRiyaz) | [<img src="" width="100px;"/>]()<br />[🌍]() [💻]() [🤝]() |
 
 ## License
-You can read the MIT License [here]().
+You can read the MIT License [here](https://github.com/MLH-Fellowship/Anon-Code/blob/main/LICENSE).
 
 
