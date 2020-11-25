@@ -1,26 +1,69 @@
+# AnonCode
 
-## To Be Decided
+<p align="center">
+  <a href="https://github.com/MLH-Fellowship/to-be-decided/graphs/commit-activity">
+    <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"
+         alt="Maintenance">
+  </a>
+  <a href="http://localhost:5000">
+    <img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg">
+  </a>
+  <a href="https://github.com/MLH-Fellowship/to-be-decided/issues">
+      <img src="https://img.shields.io/github/issues-raw/MLH-Fellowship/to-be-decided?style=flat">
+  </a>
+  <a href="https://github.com/MLH-Fellowship/to-be-decided/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square;style=flat">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#Motivation">Motivation</a> •
+  <a href="#Usage">Usage</a> •
+  <a href="#Demo">Demo</a> •
+  <a href="#Site">Site</a> •
+  <a href="#Built-with">Built with</a> •
+  <a href="#To-do">To-do</a> •
+  <a href="#Team">Team</a> •
+  <a href="#license">License</a>
+</p>
+
+## Motivation
+
+## Usage
+Open a terminal inside the root directory and run
+
+1. `npm install`
+2. `node server.js`
+
+Open another terminal 
+1. Navigate to the client folder and run `yarn install`
+2. Run `yarn build`
+3. Run `yarn start`
+
+## Demo
 
 
-## How to Run
+## Site
+## Built-with 
 
-There are two methods of running this program:
+<img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/react%20-%23121011.svg?&style=for-the-badge&logo=react&logoColor=blue"/><img src ="https://img.shields.io/badge/html-%2307405e.svg?&style=for-the-badge&logo=html&logoColor=orange"/><img src ="https://img.shields.io/badge/css-%2307405e.svg?&style=for-the-badge&logo=css&logoColor=orange"/> 
 
-### Method 1
-In a terminal run the command `. init.sh` (Make sure you are in the root directory)
-Open another terminal and run the following command `. ngrok.sh`.
+|Langauge | Framework | Component|
+|-|-|-|
+|JavaScript|[React.js](https://reactjs.org/) | Frontend|
+|JavaScript| | |
+|HTML| | |
+|CSS||  |
 
-### Method 2
-In a terminal run the following steps
-1. `python -m venv venv`
-2. `source venv/bin/activate`
-3. `pip install -r requirements.txt`
-4. `FLASK_ENV=development flask run`
-
-Next Open another terminal and run.
-5. `source venv/bin/activate`
-6 . `ngrok http 5000`
+## To-do
 
 
-## References
-- [Twilio Video Chat Blog](https://www.twilio.com/blog/build-video-chat-application-python-javascript-twilio-programmable-video)
+## Team
+| Prionti Nasir | Shayan Riyaz | Shiyue Zhang |
+| :----: | :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/31460383?s=400&u=3c9633dec7b2a9eadb0ed2b8174afb3475e56283&v=4" width="100px;"/>](https://github.com/knoxd8256)<br />[🌍]() [💻](https://github.com/smellslikekeenspirit) [🤝]() | [<img src="https://avatars1.githubusercontent.com/u/28723598?s=460&u=9444300dccf4ead144b03c7710f0ff4c149e05f8&v=4" width="100px;"/>](https://shayanriyaz.github.io)<br />[🌍](https://shayanriyaz.github.io) [💻](https://github.com/ShayanRiyaz) | [<img src="" width="100px;"/>]()<br />[🌍]() [💻]() [🤝]() |
+
+## License
+You can read the MIT License [here]().
+
+
