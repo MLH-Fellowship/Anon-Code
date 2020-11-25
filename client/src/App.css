@@ -17,10 +17,12 @@ html {
 
 .playground {
   /* position: fixed; */
+  float: left;
+  height: 100vh;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 600px;
+  width: 50vw;
   background-color: #1E1E2C;
 }
 
@@ -46,7 +48,10 @@ html {
 }
 
 .result {
-  position: fixed;
+  /* position: fixed; */
+  float:right;
+  width:50vw;
+  height:100vh; 
   top: 0;
   right: 0;
   bottom: 0;

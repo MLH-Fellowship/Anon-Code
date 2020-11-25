@@ -10,8 +10,8 @@ ReactDOM.render(
     // <App />
   // </React.StrictMode>,
     <React.StrictMode>
+      <VideoApp />
       <App />
-    <VideoApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

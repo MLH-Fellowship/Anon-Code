@@ -6,10 +6,10 @@ import styled from "styled-components";
 import './VideoApp.css';
 
 const Container = styled.div`
-  height: 100vh;
+  height: 60vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 const Row = styled.div`
