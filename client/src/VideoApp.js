@@ -147,16 +147,18 @@ function VideoApp() {
           {UserVideo}
           {PartnerVideo}
         </Row>
+        <Row>
         <Divider type='vertical'>
         {Object.keys(users).map(key => {
             if (key === yourID) {
               return null;
             }
             return (
-              <button style={{marginTop: 50, width: 200}} onClick={() => callPeer(key)}>Call {key}</button>
+              <button style={{marginTop: 50, marginLeft: 110, width: 200}} onClick={() => callPeer(key)}>Call {key}</button>
             );
           })}
       </Divider>
+      </Row>
         <Row>
           {incomingCall}
         </Row>
