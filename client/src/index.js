@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import VideoApp from './App';
-// import App from './App';
+import VideoApp from './VideoApp';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   // <React.StrictMode>
-  //   <App />
+    // <App />
   // </React.StrictMode>,
     <React.StrictMode>
+      <App />
     <VideoApp />
   </React.StrictMode>,
   document.getElementById('root')
