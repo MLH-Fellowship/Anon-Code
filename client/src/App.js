@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef  } from 'react';
+import React, { Col, useEffect, useState, useRef  } from 'react';
+import Editor from './editor';
 //import { Component  } from 'react';
 
 // import { Controlled as CodeMirror } from "react-codemirror2";
@@ -27,12 +28,29 @@ const Container = styled.div`
 
 const Row = styled.div`
   display: flex;
+  height: 3%;
   width: 100%;
+`;
+
+const EqualDivider = styled.div`
+  display: flex;
+  margin: 0.5rem;
+  padding: 1rem;
+  height: 70%;
+  ${props => props.vertical && "flex-direction: column;"}
+
+  > * {
+    flex: 1;
+
+    &:not(:first-child) {
+      ${props => props.vertical ? "margin-top" : "margin-left"}: 0.1rem;
+    }
+  }
 `;
 
 const Video = styled.video`
   border: 1px solid blue;
-  width: 50%;
+  width: 80%;
   height: 50%;
 `;
 
@@ -296,10 +314,13 @@ function VideoApp() {
   return (
     
     <Container>
-      <Row>
+      <EqualDivider>
+      <EqualDivider vertical>
         {UserVideo}
         {PartnerVideo}
-      </Row>
+      </EqualDivider>
+      <Editor></Editor>
+      </EqualDivider>
       <Row>
         {Object.keys(users).map(key => {
           if (key === yourID) {
