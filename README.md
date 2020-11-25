@@ -33,7 +33,9 @@
 Open a terminal inside the root directory and run
 
 1. `npm install`
+3. Make an `.env` file by following the `.env.template`
 2. `node server.js`
+
 
 Open another terminal 
 1. Navigate to the client folder and run `yarn install`
