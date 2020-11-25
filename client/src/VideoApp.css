@@ -1,0 +1,40 @@
+
+
+.VideoApp {
+    text-align: center;
+  }
+  
+  .VideoApp-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .VideoApp-logo {
+      animation: VideoApp-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .VideoApp-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .VideoApp-link {
+    color: #61dafb;
+  }
+  
+  @keyframes VideoApp-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
