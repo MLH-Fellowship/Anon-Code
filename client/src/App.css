@@ -1,0 +1,99 @@
+
+
+.VideoApp {
+  text-align: center;
+}
+
+.VideoApp-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .VideoApp-logo {
+    animation: VideoApp-logo-spin infinite 20s linear;
+  }
+}
+
+.VideoApp-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.VideoApp-link {
+  color: #61dafb;
+}
+
+@keyframes VideoApp-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* 
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.playground {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 600px;
+  background-color: #1E1E2C;
+}
+
+.code-editor {
+  height: 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.editor-header {
+  height: 30px;
+  content: attr(title);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 18px;
+  color: #fafafa;
+}
+
+.react-codemirror2 {
+  max-height: calc(100% - 30px);
+  overflow: auto;
+}
+
+.result {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 600px;
+  overflow: hidden;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+} */
