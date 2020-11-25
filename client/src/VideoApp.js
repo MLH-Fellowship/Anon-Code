@@ -4,6 +4,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import styled from "styled-components";
 
 import './VideoApp.css';
+import { Divider,Button } from "antd";
 
 const Container = styled.div`
   height: 60vh;
@@ -19,8 +20,8 @@ const Row = styled.div`
 
 const Video = styled.video`
   border: 1px solid blue;
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
 `;
 
 function VideoApp() {
@@ -119,21 +120,21 @@ function VideoApp() {
     let UserVideo;
     if (stream) {
       UserVideo = (
-        <Video playsInline muted ref={userVideo} autoPlay />
+        <Video style={{marginTop: 50}} playsInline muted ref={userVideo} autoPlay />
       );
     }
   
     let PartnerVideo;
     if (callAccepted) {
       PartnerVideo = (
-        <Video playsInline ref={partnerVideo} autoPlay />
+        <Video style={{marginTop: 50}} playsInline ref={partnerVideo} autoPlay />
       );
     }
   
     let incomingCall;
     if (receivingCall) {
       incomingCall = (
-        <div>
+        <div style={{marginLeft: 20, marginTop: 30}}>
           <h1>{caller} is calling you</h1>
           <button onClick={acceptCall}>Accept</button>
         </div>
@@ -147,15 +148,17 @@ function VideoApp() {
           {PartnerVideo}
         </Row>
         <Row>
-          {Object.keys(users).map(key => {
+        <Divider type='vertical'>
+        {Object.keys(users).map(key => {
             if (key === yourID) {
               return null;
             }
             return (
-              <button onClick={() => callPeer(key)}>Call {key}</button>
+              <button style={{marginTop: 50, marginLeft: 110, width: 200}} onClick={() => callPeer(key)}>Call {key}</button>
             );
           })}
-        </Row>
+      </Divider>
+      </Row>
         <Row>
           {incomingCall}
         </Row>
