@@ -1,4 +1,4 @@
-# AnonCode
+# <div align="center">Anon Code<div>
 
 <p align="center">
   <a href="https://github.com/MLH-Fellowship/to-be-decided/graphs/commit-activity">
