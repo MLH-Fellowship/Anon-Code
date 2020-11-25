@@ -32,7 +32,7 @@
 ## Usage
 Open a terminal inside the root directory and run
 
-1. `npm install``
+1. `npm install`
 2. `node server.js`
 
 Open another terminal 
