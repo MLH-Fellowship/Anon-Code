@@ -28,6 +28,7 @@
 </p>
 
 ## Motivation
+Pair collaboration is not easy especially when it is online. Therefore, we hope by integrating video chat and code editor together, we could bring user a better pair programming experience.
 
 ## Usage
 Open a terminal inside the root directory and run
@@ -53,12 +54,16 @@ Open another terminal
 |Langauge | Framework | Component|
 |-|-|-|
 |JavaScript|[React.js](https://reactjs.org/) | Frontend|
-|JavaScript| | |
+|JavaScript|[Express.js](https://expressjs.com/) | Backend|
 |HTML| | |
 |CSS||  |
 
-## To-do
+Other tools:
+[Pusher](https://pusher.com/channels?campaignid=916184871&utm_source=adwords&utm_medium=cpc&utm_campaign=Brand_Pusher_Exact&utm_term=pusher&utm_creative=264982473776&gclid=CjwKCAiAnvj9BRA4EiwAuUMDf3ZwSy6Y619wNpGmAiVbX_z_uKfR4sfGqW7oDVhnlGqPFWCcncpUjhoCMl0QAvD_BwE)
 
+## To-do
+- Improve UI
+- Support other languages and add compiler
 
 ## Team
 | Prionti Nasir | Shayan Riyaz | Shiyue Zhang |
