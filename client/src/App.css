@@ -57,12 +57,12 @@ html {
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background-color: #1E1E2C;
+  /* background-color: #1E1E2C; */
 
 }
 
 .iframe {
-  background-color: #1E1E2C;
+  /* background-color: #1E1E2C; */
   width: 100%;
   height: 100%;
 }
